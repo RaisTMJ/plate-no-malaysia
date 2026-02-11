@@ -37,11 +37,11 @@ export default function ViewPlate() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gray-200">
+    <div className="fixed inset-0 bg-gray-200 p-[10px] flex items-center justify-center">
       {/* Back Button */}
       <button
         onClick={() => router.back()}
-        className="absolute top-4 left-4 z-50 p-2 bg-black text-white rounded-full shadow-lg hover:bg-gray-800 transition-colors"
+        className="absolute top-4 left-4 z-50 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors backdrop-blur-sm"
         aria-label="Back"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,15 +49,13 @@ export default function ViewPlate() {
         </svg>
       </button>
 
-      {/* Full Screen Content */}
-      <div className="flex-1 flex items-center justify-center p-4">
-        <PlateVisual
-          number={plate.number}
-          type={plate.type}
-          state={plate.state}
-          className="w-full max-w-4xl h-auto aspect-[4/1] md:aspect-[5/1] text-6xl md:text-8xl shadow-2xl transform scale-100 transition-transform duration-500 hover:scale-105"
-        />
-      </div>
+      {/* Full Screen Plate */}
+      <PlateVisual
+        number={plate.number}
+        type={plate.type}
+        state={plate.state}
+        className="w-full h-full"
+      />
     </div>
   );
 }

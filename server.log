@@ -1,14 +1,20 @@
 
-> my-app@0.1.0 start
-> next start
+> my-app@0.1.0 dev
+> next dev --webpack
 
-⨯ Failed to start server
-Error: listen EADDRINUSE: address already in use :::3000
-    at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
-    at new Promise (<anonymous>) {
-  code: 'EADDRINUSE',
-  errno: -98,
-  syscall: 'listen',
-  address: '::',
-  port: 3000
-}
+▲ Next.js 16.1.6 (webpack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+
+✓ Starting...
+✓ Ready in 2.2s
+○ Compiling / ...
+ GET / 200 in 9.5s (compile: 8.7s, render: 774ms)
+ HEAD / 200 in 52ms (compile: 10ms, render: 42ms)
+ GET / 200 in 68ms (compile: 6ms, render: 61ms)
+ GET /view/1 200 in 2.7s (compile: 2.6s, render: 78ms)
+ GET /view/1 200 in 64ms (compile: 20ms, render: 44ms)
+ GET / 200 in 177ms (compile: 16ms, render: 161ms)
+ GET /view/1 200 in 59ms (compile: 22ms, render: 37ms)
+ GET / 200 in 101ms (compile: 10ms, render: 90ms)
+ GET /view/1 200 in 59ms (compile: 28ms, render: 31ms)
