@@ -29,19 +29,41 @@ export default function ViewPlate() {
   }, [id]);
 
   if (loading) {
-    return <div className="flex h-screen items-center justify-center bg-gray-100">Loading...</div>;
+    return <div className="flex h-screen items-center justify-center bg-gray-900 text-white">Loading...</div>;
   }
 
   if (!plate) {
-    return <div className="flex h-screen items-center justify-center bg-gray-100">Plate not found.</div>;
+    return <div className="flex h-screen items-center justify-center bg-gray-900 text-white">Plate not found.</div>;
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gray-200">
-      {/* Back Button */}
+    <div className="w-screen h-screen bg-gray-900 overflow-hidden relative">
+      <style jsx global>{`
+        .landscape-container {
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px;
+        }
+        @media screen and (orientation: portrait) {
+          .landscape-container {
+            width: 100vh;
+            height: 100vw;
+            transform: translate(-50%, -50%) rotate(90deg);
+            transform-origin: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+          }
+        }
+      `}</style>
+
+      {/* Back Button - Minimalist and floating */}
       <button
         onClick={() => router.back()}
-        className="absolute top-4 left-4 z-50 p-2 bg-black text-white rounded-full shadow-lg hover:bg-gray-800 transition-colors"
+        className="absolute top-4 left-4 z-50 p-3 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors backdrop-blur-sm"
         aria-label="Back"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,12 +72,12 @@ export default function ViewPlate() {
       </button>
 
       {/* Full Screen Content */}
-      <div className="flex-1 flex items-center justify-center p-4">
+      <div className="landscape-container">
         <PlateVisual
           number={plate.number}
           type={plate.type}
           state={plate.state}
-          className="w-full max-w-4xl h-auto aspect-[4/1] md:aspect-[5/1] text-6xl md:text-8xl shadow-2xl transform scale-100 transition-transform duration-500 hover:scale-105"
+          fullscreen={true}
         />
       </div>
     </div>
